@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Compressor from 'compressorjs';
 
 export default function Upload() {
@@ -17,6 +17,7 @@ export default function Upload() {
 
   const [fileName, setFileName] = useState(null);
   const [compressedFile, setCompressedFile] = useState(null);
+  const [userAgent, setUserAgent] = useState('desktop');
 
   const handleCompressedUpload = (e) => {
     const image = e.target.files[0];
@@ -33,6 +34,16 @@ export default function Upload() {
     });
   };
 
+  useEffect(() => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setUserAgent('mobile');
+    }
+  }, []);
+
   return (
     <>
       {' '}
@@ -47,6 +58,7 @@ export default function Upload() {
       <a download={fileName} href={compressedFile}>
         Download
       </a>
+      <h2>{userAgent}</h2>
     </>
   );
 }
