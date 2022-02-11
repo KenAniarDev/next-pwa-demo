@@ -37,8 +37,9 @@ export default function Upload() {
     <>
       {' '}
       <input
-        accept='image/*,capture=camera'
-        capture='”camera'
+        accept='image/*'
+        // accept='image/*,capture=camera'
+        // capture='”camera'
         type='file'
         onChange={(event) => handleCompressedUpload(event)}
       />
