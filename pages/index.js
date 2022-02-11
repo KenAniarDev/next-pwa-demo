@@ -32,6 +32,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Link href={'test'}>
+          <a>test</a>
+        </Link>
         <table className={styles.table}>
           <tr className={styles.tr}>
             <th className={styles.th}>Name</th>
